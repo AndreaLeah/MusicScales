@@ -1,11 +1,13 @@
 // Variables
 let keyboardContainer = document.getElementById('keyboard');
 let scaleArray = [];
-let scaleSelectMenu = document.getElementById('select');
+let scaleSelectMenu = document.getElementById('scale-select');
+let majorminorMenu = document.getElementById('major-minor-select');
+
 
 let baseNote = "C";
 let noteColor = "pink";
-let majorOrMinor;
+let majorOrMinor = 1;
 
 
 // Functions
@@ -50,28 +52,56 @@ function generateKeyboard(octaveAmount) {
 }
 
 // Creates array for selected scale with note numbers
-function scaleLogic(noteNumber) {
+function scaleLogic(noteNumber, majorminor) {
     
-    let incrementNumVariable = parseInt(noteNumber);
+    let incrementNumVariable = noteNumber;
     scaleArray = [];
-    
-    // Major Key
     
     // Add Root Note to List
     scaleArray.push(incrementNumVariable);
     
-    // Loop 6 times for notes in scale
-    for (let i = 1; i <= 6; i++) {
+    // Major Key
+    if (majorminor ===  1) {
         
+        // Loop 6 times for notes in scale
+        for (let i = 1; i <= 6; i++) {
+            
+                // Half Steps
+                if (i == 3) {
+                    incrementNumVariable += 1;
+                } 
+                // Whole Steps
+                else {
+                    incrementNumVariable += 2;
+                } 
+                
+                // Decrement Relative to Root Note Once Scale Note # Exceeded
+                if (incrementNumVariable > 12) {
+
+                    incrementNumVariable = incrementNumVariable - 12;
+
+                }
+
+            // Push noteNumber to scaleArray
+            scaleArray.push(incrementNumVariable);
+            
+        }
+    }
+
+    // Minor Key
+    else {
+
+        for (let i = 1; i <= 6; i++) {
+
             // Half Steps
-            if (i == 3) {
+            if (i == 2 || i == 5) {
                 incrementNumVariable += 1;
-            } 
+            }
             // Whole Steps
             else {
                 incrementNumVariable += 2;
-            } 
-            
+            }
+
             // Decrement Relative to Root Note Once Scale Note # Exceeded
             if (incrementNumVariable > 12) {
 
@@ -81,8 +111,13 @@ function scaleLogic(noteNumber) {
 
         // Push noteNumber to scaleArray
         scaleArray.push(incrementNumVariable);
-        
+
+        }
+
     }
+
+
+
 
     console.log(scaleArray);
 }
@@ -115,12 +150,15 @@ function resetKeyColors() {
 function implementScale() {
 
     // Get Scale Root Note From Menu Dropdown
-    baseNote = document.getElementById('select').value;
+    baseNote = parseInt(scaleSelectMenu.value);
     console.log(`Base note value changed: ${baseNote}`);
     console.log(`This is the base note: ${baseNote}`);
 
+    // Get major (1) or minor (2) from dropdown
+    let majMin = parseInt(majorminorMenu.value);
+
     // Send numeric value over to calculate scaleArray
-    scaleLogic(baseNote);
+    scaleLogic(baseNote, majMin);
 
     // Color each note based on its scale
     colorEachNoteInScale();
@@ -154,7 +192,8 @@ function colorEachNoteInScale() {
 
 // Event Listeners
 
-scaleSelectMenu.addEventListener('change', implementScale)
+scaleSelectMenu.addEventListener('change', implementScale);
+majorminorMenu.addEventListener('change', implementScale);
 
 
 // Program
