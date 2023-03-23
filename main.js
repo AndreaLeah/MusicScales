@@ -3,10 +3,11 @@ let keyboardContainer = document.getElementById('keyboard');
 let scaleArray = [];
 let scaleSelectMenu = document.getElementById('scale-select');
 let majorminorMenu = document.getElementById('major-minor-select');
+let colorPicker = document.getElementById('color-picker');
 
 
 let baseNote = "C";
-let noteColor = "pink";
+let noteColor = "blue";
 let majorOrMinor = 1;
 
 
@@ -160,6 +161,9 @@ function implementScale() {
     // Send numeric value over to calculate scaleArray
     scaleLogic(baseNote, majMin);
 
+    // Get color from color picker
+    noteColor = `${colorPicker.value}`;
+
     // Color each note based on its scale
     colorEachNoteInScale();
 
@@ -168,8 +172,6 @@ function implementScale() {
 function colorEachNoteInScale() {
 
     resetKeyColors();
-
-    let notes;
 
     // Loop through scaleArray to assign background color to each note
     scaleArray.forEach(note => {
@@ -185,15 +187,13 @@ function colorEachNoteInScale() {
         });
 
     });
-
-    // Color last C note
-
 }
 
 // Event Listeners
 
 scaleSelectMenu.addEventListener('change', implementScale);
 majorminorMenu.addEventListener('change', implementScale);
+colorPicker.addEventListener('change', implementScale);
 
 
 // Program

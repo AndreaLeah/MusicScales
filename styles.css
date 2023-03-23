@@ -14,14 +14,31 @@ main {
     gap: 100px;
 }
 
-/* Controls */
+/* Controls Div */
 
 #controls {
     display: flex;
+    align-items: center;
     gap: 25px;
 }
 
+    /* Color Picker */
 
+#color-picker {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 100px;
+    width: 100px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#color-picker::-webkit-color-swatch {
+    border-radius: 50px;
+    border: none;
+}
 
 
 /* Keyboard */
