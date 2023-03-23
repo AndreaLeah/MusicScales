@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Will need to change once add header & nav */
+    height: 100%;
+    gap: 100px;
+}
+
+#keyboard {
+    display: flex;
+}
+
+.octaveContainer {
+    display: flex;
+    position: relative;
+}
+
+.keys:hover {
+    cursor: pointer;
+    background-color: aquamarine;
+}
+
+/* White Keys */
+._1, ._3, ._5, ._6, ._8, ._10, ._12 {
+    background-color: white;
+    border: 1px solid grey;
+    height: 400px;
+    width: 100px;
+}
+
+/* Black Keys */
+._2, ._4, ._7, ._9, ._11 {
+    background-color: black;
+    height: 225px;
+    width: 55px;
+    position: absolute;
+}
+
+/* Black Key Positioning */
+._2 {
+    left: 75px;
+}
+
+._4 {
+    left: 175px;
+}
+
+._7 {
+    left: 380px;
+}
+
+._9 {
+    left: 482px;
+}
+
+._11 {
+    left: 585px;
+}
+
