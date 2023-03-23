@@ -2,12 +2,12 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    margin-top: 100px;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     /* Will need to change once add header & nav */
     height: 100%;
@@ -18,8 +18,30 @@ main {
 
 #controls {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 40px;
+}
+
+#scale-dropdown, #major-minor-dropdown {
+    display: flex;
+    gap: 10px;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#scale-select, #major-minor-select {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#scale-select:hover, #major-minor-select:hover {
+    cursor: pointer;
+}
+
+#scale-key-container {
+    display: flex;
+    gap: 15px;
 }
 
     /* Color Picker */

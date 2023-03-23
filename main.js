@@ -6,9 +6,9 @@ let majorminorMenu = document.getElementById('major-minor-select');
 let colorPicker = document.getElementById('color-picker');
 
 
-let baseNote = "C";
-let noteColor = "blue";
-let majorOrMinor = 1;
+let baseNote;
+let noteColor;
+let majorOrMinor;
 
 
 // Functions
